@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="peoject.css">
+    <title>Diwali Celebration</title>
+</head>
+<body>
+    <h1>Happy Diwali</h1>
+    <div class="firework-container" id="fireworkContainer"></div>
+    <div class="input-container">
+        <h2>Enter your Name</h2>
+        <input type="text" id="username" placeholder="Your Name">
+        <button onclick="displayGreeting(); launchRocket();">Submit</button>
+        <div class="greeting" id="greeting"></div>
+    </div>
+
+    <script>
+        const wishes = [
+            "May the brightness of Diwali fill your days with peace, prosperity, and happiness. Wishing you a sparkling Diwali!",
+            "Wishing you a Diwali full of new hopes, bright dreams, and a beautiful life. Happy Diwali!",
+            "On this auspicious festival of lights, may you be blessed with good health, wealth, and success. Happy Diwali!",
+            "May your Diwali be filled with sweet memories, endless laughter, and glowing lights. Have a blessed festival!",
+            "May the colors of Diwali illuminate your life with peace, joy, and success. Have a happy and prosperous Diwali!",
+            "This Diwali, let’s make a commitment to bring smiles to others and spread love and joy. Happy Diwali!",
+            "Wishing you and your family health, wealth, and happiness on this beautiful Diwali. Stay blessed!",
+            "May the divine light of Diwali bring peace, prosperity, and happiness to your life. Happy Diwali!",
+            "May your Diwali be filled with the warmth of loved ones and the joy of moments shared. Have a blessed Diwali!"
+        ];
+
+        function displayGreeting() {
+            const name = document.getElementById("username").value.trim();
+            if (name) {
+                const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+                document.getElementById("greeting").innerHTML = `Hello, ${name}! ${randomWish}`;
+            } else {
+                document.getElementById("greeting").innerHTML = "Please enter your name!";
+            }
+        }
+
+        function launchRocket() {
+            const rocket = document.createElement("div");
+            rocket.className = "rocket";
+            document.body.appendChild(rocket);
+            setTimeout(() => rocket.remove(), 2000);
+        }
+
+        function createPersistentFireworks() {
+            const fireworkContainer = document.getElementById("fireworkContainer");
+            for (let i = 0; i < 15; i++) {
+                const firework = document.createElement("div");
+                firework.className = "firework";
+                firework.style.left = `${Math.random() * 100}vw`;
+                firework.style.top = `${Math.random() * 100}vh`;
+                fireworkContainer.appendChild(firework);
+            }
+        }
+
+        createPersistentFireworks();
+    </script>
+</body>
+</html>
